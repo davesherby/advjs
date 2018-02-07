@@ -1,5 +1,5 @@
 pipeline {
-    agent 'node9'
+    tools {nodejs "node9"}
 
     stages {
         stage("foo") {
