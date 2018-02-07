@@ -1,5 +1,5 @@
 pipeline {
-    agent 'NPM5'
+    agent 'node9'
 
     stages {
         stage("foo") {
