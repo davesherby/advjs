@@ -12,4 +12,13 @@ node {
     stage('build') {
       sh 'ng build'
     }
+    stage('control-lint') {
+      sh 'ng lint'
+    }
+    stage('control-unit') {
+      sh 'ng test'
+    }
+    stage('control-e2e') {
+      sh 'ng e2e'
+    }
 }
