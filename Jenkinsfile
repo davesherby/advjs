@@ -1,19 +1,15 @@
-pipeline {
-    agent any
-      tools {nodejs "node9"}
-environment {
-        NPM_CONFIG_PREFIX = 'TUTU'
-        DB_ENGINE    = 'sqlite'
+node {
+    env.NODEJS_HOME = "${tool 'node9'}"
+    def currentFolder = pwd()
+    env.PATH="${currentFolder}/node_modules/.bin:${env.NODEJS_HOME}/bin:${env.PATH}"
+    stage('init') {
+      sh 'echo $PATH'
+	  sh 'npm -v'
     }
-      stages {
-          stage("foo") {
-              steps {
-                  echo "coucou ${NPM_CONFIG_PREFIX}"
-    		  echo "npm -v"
-		  sh 'npm -v'
-		  sh 'echo NPNP ${NPM_CONFIG_PREFIX}'
-		  echo "au revoir"
-              }
-          }
-      }
+    stage('install-dependencies') {
+	  sh 'npm-cache install'
+    }
+    stage('build') {
+      sh 'ng build'
+    }
 }
