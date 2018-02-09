@@ -9,6 +9,12 @@ node {
     sh 'ls -al'
     sh 'echo APRES1'
     }
+    stage('Checkout') {
+      checkout scm
+      sh 'echo AVANTPP'
+      sh 'ls -al'
+      sh 'echo APRESPP'      
+    }
     stage('install-dependencies') {
     sh 'echo AVANT2'
     sh 'ls -al'
