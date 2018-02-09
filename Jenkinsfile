@@ -17,16 +17,13 @@ node {
           }
         }
     }
-    stage('post') {
-    sh 'echo Attention : HTML'
-    publishHTML (target: [
-            allowMissing: false,
-            alwaysLinkToLastBuild: false,
-            keepAll: true,
-            reportDir: 'coverage',
-            reportFiles: 'index2.html',
-            reportName: "Coverage Report"
-          ])
+    stage('junitReport') {
     junit 'coverage/test-report.xml'
+    }
+    stage('Sonar') {
+      def scannerHome = tool 'SonarQube3'
+      withSonarQubeEnv('SonarQube') {
+        sh "${scannerHome}/bin/sonar-scanner"
+      }
     }
 }
