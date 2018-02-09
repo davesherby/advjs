@@ -24,7 +24,6 @@ module.exports = function (config) {
       environment: 'dev'
     },
     reporters: ['progress', 'kjhtml', 'junit'],
-    ,
    junitReporter: {
      outputDir: 'coverage',
      useBrowserName: false, // add browser name to report and classes names
@@ -37,7 +36,7 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     chromeOptions: {
        args: [ "--headless", "--disable-gpu", "--window-size=800,600" ]
-    }
+    },
     singleRun: false
   });
 };
