@@ -9,16 +9,18 @@ node {
     stage('install-dependencies') {
 	  sh 'npm-cache install'
     }
-    stage('build') {
-      sh 'ng build'
-    }
-    stage('control-lint') {
-      sh 'ng lint'
-    }
-    stage('control-unit') {
-      sh 'ng test'
-    }
-    stage('control-e2e') {
-      sh 'ng e2e'
-    }
+      docker.image('trion/ng-cli-e2e').inside {
+          stage('Unit Test') {
+            sh 'ng test --browser ChromeHeadless --code-coverage=true --single-run=true'
+            publishHTML (target: [
+                  allowMissing: false,
+                  alwaysLinkToLastBuild: false,
+                  keepAll: true,
+                  reportDir: 'coverage',
+                  reportFiles: 'index.html',
+                  reportName: "Coverage Report"
+                ])
+            junit 'coverage/test-report.xml'
+          }
+        }
 }
