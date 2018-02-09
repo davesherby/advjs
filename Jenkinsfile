@@ -8,16 +8,12 @@ node {
      sh 'ls -al'
     }
     stage('install-dependencies') {
-    sh 'echo AVANT2'
-    sh 'ls -al'
 	  sh 'npm-cache install'
-    sh 'echo APRES2'
     }
       docker.image('trion/ng-cli-e2e').inside {
           stage('Unit Test') {
-          sh 'echo AVANT3'
-          sh 'ls -al'
-          sh 'echo APRES3'
+          sh 'echo disabling shell exit on error'
+          sh 'set +e'
             sh 'ng test --browser ChromeHeadless --code-coverage=true --single-run=true'
             /*publishHTML (target: [
                   allowMissing: false,
@@ -27,6 +23,8 @@ node {
                   reportFiles: 'index.html',
                   reportName: "Coverage Report"
                 ])*/
+            sh 'set -e'
+            sh 'echo enabling shell exit on error'
             sh 'ls -al coverage'
             junit 'coverage/test-report.xml'
           }
