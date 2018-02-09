@@ -15,16 +15,18 @@ node {
           catch (err) {
             sh 'echo erreur lors de l execution des tests'
           }
-          sh 'Attention : HTML'
-          publishHTML (target: [
-                  allowMissing: false,
-                  alwaysLinkToLastBuild: false,
-                  keepAll: true,
-                  reportDir: 'coverage',
-                  reportFiles: 'index2.html',
-                  reportName: "Coverage Report"
-                ])
-          junit 'coverage/test-report.xml'
         }
+    }
+    stage('post') {
+    sh 'Attention : HTML'
+    publishHTML (target: [
+            allowMissing: false,
+            alwaysLinkToLastBuild: false,
+            keepAll: true,
+            reportDir: 'coverage',
+            reportFiles: 'index2.html',
+            reportName: "Coverage Report"
+          ])
+    junit 'coverage/test-report.xml'
     }
 }
