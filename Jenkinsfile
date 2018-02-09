@@ -13,7 +13,7 @@ node {
     stage('install-dependencies') {
     sh 'echo AVANT2'
     sh 'ls -al'
-	  sh 'npm-cache install
+	  sh 'npm-cache install'
     sh 'echo APRES2'
     }
       docker.image('trion/ng-cli-e2e').inside {
