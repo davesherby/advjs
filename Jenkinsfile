@@ -13,6 +13,7 @@ node {
       docker.image('trion/ng-cli-e2e').inside {
           stage('Unit Test') {
           sh 'echo disabling shell exit on error'
+          try {
           sh 'ng test --browser ChromeHeadless --code-coverage=true --single-run=true;:'
             /*publishHTML (target: [
                   allowMissing: false,
@@ -22,7 +23,12 @@ node {
                   reportFiles: 'index.html',
                   reportName: "Coverage Report"
                 ])*/
-            junit 'coverage/test-report.xml'
+
           }
+          }
+          catch (err) {
+            sh 'echo erreur lors de l execution des tests'
+          }
+          junit 'coverage/test-report.xml'
         }
 }
