@@ -9,7 +9,6 @@ node {
     sh 'ls -al'
     sh 'echo APRES1'
     }
-    }
     stage('install-dependencies') {
     sh 'echo AVANT2'
     sh 'ls -al'
