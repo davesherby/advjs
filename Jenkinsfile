@@ -21,7 +21,7 @@ node {
                   reportFiles: 'index.html',
                   reportName: "Coverage Report"
                 ])*/
-            sh 'ls -al'
+            sh 'ls -al coverage'
             junit 'coverage/test-report.xml'
           }
         }
