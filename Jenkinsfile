@@ -12,16 +12,16 @@ node {
     }
       docker.image('trion/ng-cli-e2e').inside {
           stage('Unit Test') {
-#            sh 'ng test --browser ChromeHeadless --code-coverage=true --single-run=true'
-#            publishHTML (target: [
-#                  allowMissing: false,
-#                  alwaysLinkToLastBuild: false,
-#                  keepAll: true,
-#                  reportDir: 'coverage',
-#                  reportFiles: 'index.html',
-#                  reportName: "Coverage Report"
-#                ])
-#            junit 'coverage/test-report.xml'
+/*            sh 'ng test --browser ChromeHeadless --code-coverage=true --single-run=true'
+            publishHTML (target: [
+                  allowMissing: false,
+                  alwaysLinkToLastBuild: false,
+                  keepAll: true,
+                  reportDir: 'coverage',
+                  reportFiles: 'index.html',
+                  reportName: "Coverage Report"
+                ])
+            junit 'coverage/test-report.xml' */
              sh 'echo uiuiu'
           }
         }
