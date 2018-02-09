@@ -30,4 +30,5 @@ node {
           }
           junit 'coverage/test-report.xml'
         }
+    }
 }
