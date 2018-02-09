@@ -25,7 +25,6 @@ node {
                 ])*/
 
           }
-          }
           catch (err) {
             sh 'echo erreur lors de l execution des tests'
           }
