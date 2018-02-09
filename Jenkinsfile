@@ -15,14 +15,14 @@ node {
           sh 'echo disabling shell exit on error'
           try {
           sh 'ng test --browser ChromeHeadless --code-coverage=true --single-run=true;:'
-            /*publishHTML (target: [
+          publishHTML (target: [
                   allowMissing: false,
                   alwaysLinkToLastBuild: false,
                   keepAll: true,
                   reportDir: 'coverage',
                   reportFiles: 'index.html',
                   reportName: "Coverage Report"
-                ])*/
+                ])
 
           }
           catch (err) {
