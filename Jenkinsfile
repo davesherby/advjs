@@ -1,4 +1,7 @@
 node {
+     env.NODEJS_HOME = "${tool 'node9'}"
+     def currentFolder = pwd()
+     env.PATH="${currentFolder}/node_modules/.bin:${env.NODEJS_HOME}/bin:${env.PATH}"
     stage('init-checkout') {
      checkout scm
      sh 'npm-cache install'
