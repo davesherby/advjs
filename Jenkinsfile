@@ -1,14 +1,11 @@
 node {
     stage('init-checkout') {
      checkout scm
+     sh 'npm-cache install'
      sh 'ls -al'
     }
-      docker.image('trion/ng-cli-e2e').inside {
-          stage('install-dependencies') {
-     	      sh 'npm-cache install'
-          }
+    docker.image('trion/ng-cli-e2e').inside {
           stage('Unit Test') {
-          sh 'echo disabling shell exit on error'
           try {
           sh 'ng test --browser ChromeHeadless --code-coverage=true --single-run=true'
           }
