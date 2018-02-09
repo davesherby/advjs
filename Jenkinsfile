@@ -8,6 +8,7 @@ node {
     }
     stage('install-dependencies') {
 	  sh 'npm-cache install'
+          sh 'echo poupou'
     }
       docker.image('trion/ng-cli-e2e').inside {
           stage('Unit Test') {
