@@ -18,7 +18,7 @@ node {
         }
     }
     stage('post') {
-    sh 'Attention : HTML'
+    sh 'echo Attention : HTML'
     publishHTML (target: [
             allowMissing: false,
             alwaysLinkToLastBuild: false,
