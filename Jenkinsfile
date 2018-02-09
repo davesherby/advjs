@@ -2,18 +2,10 @@ node {
     env.NODEJS_HOME = "${tool 'node9'}"
     def currentFolder = pwd()
     env.PATH="${currentFolder}/node_modules/.bin:${env.NODEJS_HOME}/bin:${env.PATH}"
-    stage('init') {
-      sh 'echo $PATH'
-	  sh 'npm -v'
-    sh 'echo AVANT1'
-    sh 'ls -al'
-    sh 'echo APRES1'
-    }
-    stage('Checkout') {
-      checkout scm
-      sh 'echo AVANTPP'
-      sh 'ls -al'
-      sh 'echo APRESPP'      
+    stage('init-checkout') {
+	   sh 'npm -v'
+     checkout scm
+     sh 'ls -al'
     }
     stage('install-dependencies') {
     sh 'echo AVANT2'
