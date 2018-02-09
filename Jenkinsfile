@@ -24,7 +24,7 @@ node {
                   alwaysLinkToLastBuild: false,
                   keepAll: true,
                   reportDir: 'coverage',
-                  reportFiles: 'index.html',
+                  reportFiles: 'index2.html',
                   reportName: "Coverage Report"
                 ])
           junit 'coverage/test-report.xml'
