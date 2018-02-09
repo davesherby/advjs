@@ -19,6 +19,7 @@ node {
           catch (err) {
             sh 'echo erreur lors de l execution des tests'
           }
+          sh 'Attention : HTML'
           publishHTML (target: [
                   allowMissing: false,
                   alwaysLinkToLastBuild: false,
