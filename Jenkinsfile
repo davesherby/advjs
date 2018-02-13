@@ -9,7 +9,6 @@ node {
      sh 'ls -al'
      */
      checkout scm
-    }
     docker.image('trion/ng-cli-e2e').inside {
 	  stage('dependencies') {
             sh 'npm install'
