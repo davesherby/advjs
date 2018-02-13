@@ -1,15 +1,23 @@
 node {
+     /*
      env.NODEJS_HOME = "${tool 'node9'}"
      def currentFolder = pwd()
      env.PATH="${currentFolder}/node_modules/.bin:${env.NODEJS_HOME}/bin:${env.PATH}"
                 stage('init-checkout') {
-     checkout scm
+     
      sh 'npm-cache install'
      sh 'ls -al'
+     */
+     checkout scm
     }
     docker.image('trion/ng-cli-e2e').inside {
+	  checkout scm
+	  stage('dependencies') {
+            sh 'npm install'
+	  }
           stage('Unit Test') {
           try {
+
           sh 'ng test --browser ChromeHeadless --code-coverage=true --single-run=true'
           }
           catch (err) {
@@ -17,6 +25,7 @@ node {
           }
         }
     }
+    /*
     stage('junitReport') {
     junit 'coverage/test-report.xml'
     }
@@ -26,4 +35,5 @@ node {
         sh "${scannerHome}/bin/sonar-scanner"
       }
     }
+    */
 }
