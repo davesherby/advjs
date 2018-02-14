@@ -14,6 +14,7 @@ node {
     }
   }
   stage('junitReport') {
+    sh 'echo generation des tests'
     junit 'coverage/test-report.xml'
   }
   /*
