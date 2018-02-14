@@ -1,6 +1,6 @@
 node {
   checkout scm
-  docker.image('trion/ng-cli-e2e').withRun('', '--network ci-net') {
+  docker.image('trion/ng-cli-e2e').inside('--network ci-net') {
 	  stage('dependencies') {
       sh 'echo STAGE dependencies'
       sh 'npm install'
