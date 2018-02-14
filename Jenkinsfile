@@ -14,16 +14,16 @@ node {
         sh 'echo erreur lors de l execution des tests'
       }
     }
-  }
-  stage('junitReport') {
-    sh 'echo STAGE junitReport'
-    junit 'coverage/test-report.xml'
-  }
-  stage('Sonar') {
-    sh 'echo STAGE sonar'
-    def scannerHome = tool 'SonarQubeScanner3'
-    withSonarQubeEnv('sonarqubeserver') {
-      sh "${scannerHome}/bin/sonar-scanner"
+    stage('junitReport') {
+      sh 'echo STAGE junitReport'
+      junit 'coverage/test-report.xml'
     }
+    stage('Sonar') {
+      sh 'echo STAGE sonar'
+      def scannerHome = tool 'SonarQubeScanner3'
+      withSonarQubeEnv('sonarqubeserver') {
+        sh "${scannerHome}/bin/sonar-scanner"
+      }
+    }    
   }
 }
