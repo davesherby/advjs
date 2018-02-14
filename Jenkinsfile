@@ -9,6 +9,8 @@ node {
      sh 'ls -al'
      */
      checkout scm
+     sh 'whoami'
+     sh 'docker pull trion/ng-cli-e2e'
     docker.image('trion/ng-cli-e2e').inside {
 	  stage('dependencies') {
             sh 'npm install'
